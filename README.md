@@ -60,6 +60,19 @@ cpk run -L vulkan -- -e BUS_ID=PCI:129:0:0 --runtime=nvidia -v /usr/lib/x86_64-l
 ```
 
 
+### Debug
+
+If you want to find out whether a process successfully landed on the GPU and is not being run
+using CPU rendering instead, use the command,
+
+```shell
+cat /sys/kernel/debug/dri/BUS_DEVICE_ID/clients
+```
+
+where `BUS_DEVICE_ID` is the number that appears in the `BUS_ID` variable, in the case show above
+`BUS_DEVICE_ID=129`.
+
+
 ### Troubleshooting
 
 #### (EE) no screens found
