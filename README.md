@@ -69,7 +69,7 @@ using CPU rendering instead, use the command,
 cat /sys/kernel/debug/dri/BUS_DEVICE_ID/clients
 ```
 
-where `BUS_DEVICE_ID` is the number that appears in the `BUS_ID` variable, in the case show above
+where `BUS_DEVICE_ID` is the number that appears in the `BUS_ID` variable, in the case shown above
 `BUS_DEVICE_ID=129`.
 
 
