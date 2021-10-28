@@ -104,7 +104,6 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES all
 
 # copy assets
-COPY assets/configuration.sh assets/configuration.sh
 COPY assets/xorg.nvidia.conf assets/xorg.nvidia.conf
 
 # copy App
