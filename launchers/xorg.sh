@@ -9,7 +9,7 @@ set -eu
 ln -s /dev/console "/dev/tty${VT}"
 
 # launch dbus
-mkdir /var/run/dbus/
+mkdir -p /var/run/dbus/
 dbus-daemon --system
 
 # launching X
