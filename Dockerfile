@@ -103,8 +103,41 @@ RUN dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES all
 
+RUN usermod -a -G lp,floppy,audio,video,cdrom,plugdev root
+
+RUN apt update
+RUN apt install -y i965-va-driver xserver-xorg-video-fbdev libgl1-mesa-dri
+RUN apt install -y \
+    libpam-systemd \
+    libegl-mesa0 \
+    libegl1-mesa-dev \
+#    libgbm1 \
+    libgl1-mesa-dev \
+    libgl1-mesa-dri \
+    libglapi-mesa \
+    libgles2-mesa-dev \
+    libglu1-mesa \
+    libglu1-mesa-dev \
+#    libglvnd-core-dev \
+    libglx-mesa0 \
+#    libwayland-egl1-mesa \
+#    libwxgtk3.0-gtk3-0v5 \
+    mesa-common-dev \
+    mesa-utils \
+    mesa-vulkan-drivers \
+    xserver-xorg-video-nouveau
+
+
+RUN apt install -y xserver-xorg-video-vesa
+RUN apt install -y xserver-xorg-video-intel
+RUN apt install -y policykit-1
+
+RUN apt install -y \
+    libvulkan1 \
+    mesa-vulkan-drivers \
+    vulkan-utils
+
 # copy assets
 COPY assets/xorg.nvidia.conf assets/xorg.nvidia.conf
-
-# copy App
-COPY assets/Build assets/Build
+COPY assets/xorg.generic.conf assets/xorg.generic.conf
+COPY assets/xorg.generic2.conf assets/xorg.generic2.conf

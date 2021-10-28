@@ -12,7 +12,12 @@ APP=glxgears
 launcher-xorg
 
 # run with OpenGL
+${APP}
+
 vglrun -- "${APP}"
+
+
+#glxinfo
 
 # ----------------------------------------------------------------------------
 # YOUR CODE ABOVE THIS LINE

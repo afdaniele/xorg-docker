@@ -12,6 +12,9 @@ ln -s /dev/console "/dev/tty${VT}"
 mkdir -p /var/run/dbus/
 dbus-daemon --system
 
+# TODO: temporary
+XORG_CONFIG=./assets/xorg.generic2.conf
+
 # launching X
 Xorg \
     -noreset \
@@ -21,6 +24,7 @@ Xorg \
     -config "${XORG_CONFIG}" \
     -sharevts \
     -novtswitch \
+    -keeptty \
     -verbose \
     -logverbose \
     "vt${VT}" \

@@ -12,7 +12,8 @@ APP=vkcube
 launcher-xorg
 
 # run with Vulkan
-${APP}
+vulkaninfo
+#${APP}
 
 # ----------------------------------------------------------------------------
 # YOUR CODE ABOVE THIS LINE
