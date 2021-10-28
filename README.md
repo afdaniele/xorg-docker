@@ -50,11 +50,24 @@ mount graphics libraries, we will need to do that manually.
 ### Run with OpenGL
 
 ```shell
-cpk run -L opengl -- -e BUS_ID=PCI:129:0:0 --runtime=nvidia -v /usr/lib/x86_64-linux-gnu/nvidia/xorg/nvidia_drv.so:/usr/lib/xorg/modules/drivers/nvidia_drv.so -v /usr/lib/x86_64-linux-gnu/nvidia/xorg/libglxserver_nvidia.so:/usr/lib/xorg/modules/extensions/libglxserver_nvidia.so
+cpk run -L opengl -- -e BUS_ID=PCI:129:0:0 --runtime=nvidia -v /usr/lib/x86_64-linux-gnu/nvidia/xorg:/usr/lib/xorg/modules/drivers
 ```
 
 ### Run with Vulkan
 
 ```shell
-cpk run -L vulkan -- -e BUS_ID=PCI:129:0:0 --runtime=nvidia -v /usr/lib/x86_64-linux-gnu/nvidia/xorg/nvidia_drv.so:/usr/lib/xorg/modules/drivers/nvidia_drv.so -v /usr/share/vulkan:/etc/vulkan
+cpk run -L vulkan -- -e BUS_ID=PCI:129:0:0 --runtime=nvidia -v /usr/lib/x86_64-linux-gnu/nvidia/xorg:/usr/lib/xorg/modules/drivers -v /usr/share/vulkan:/etc/vulkan
 ```
+
+
+### Troubleshooting
+
+#### (EE) no screens found
+
+When the X server inside the container dies with this message, it is very likely that it wasn't 
+the display that it wasn't found but your GPU drivers.
+In particular, make sure that you have this file on your host system
+`/usr/lib/x86_64-linux-gnu/nvidia/xorg/nvidia_drv.so`.
+If this file is not there, you either have installed the server version of the nvidia drivers 
+(which do not carry graphics drivers), or it is somewhere else, if you find it, maybe with 
+`locate nvidia_drv.so`, you can update the cpk command above accordingly.
