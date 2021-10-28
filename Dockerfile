@@ -94,10 +94,11 @@ ENV QT_X11_NO_MITSHM=1
 #RUN chmod +x ./NVIDIA-Linux-x86_64-${NVIDIA_DRIVER_VERSION}.run
 #RUN ./NVIDIA-Linux-x86_64-${NVIDIA_DRIVER_VERSION}.run --accept-license --no-questions --ui=none --skip-depmod --no-drm --no-kernel-module
 
+# NOTE: uncomment this block if you want to install VirtualGL inside the container
 # install VirtualGL to forward calls from virtual framebuffer device to actual GPU
-ENV VIRTUALGL_VERSION=2.6.5
-COPY assets/virtualgl_${VIRTUALGL_VERSION}_amd64.deb ./virtualgl_${VIRTUALGL_VERSION}_amd64.deb
-RUN dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
+#ENV VIRTUALGL_VERSION=2.6.5
+#COPY assets/virtualgl_${VIRTUALGL_VERSION}_amd64.deb ./virtualgl_${VIRTUALGL_VERSION}_amd64.deb
+#RUN dpkg -i virtualgl_${VIRTUALGL_VERSION}_amd64.deb
 
 # nvidia runtime configuration
 ENV NVIDIA_VISIBLE_DEVICES all
