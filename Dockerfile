@@ -106,6 +106,3 @@ ENV NVIDIA_DRIVER_CAPABILITIES all
 
 # copy assets
 COPY assets/xorg.nvidia.conf assets/xorg.nvidia.conf
-
-# copy App
-COPY assets/Build assets/Build
